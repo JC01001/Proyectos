@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Extension Sin Distraccion",
+    "version": "1.0", 
+    "description": "extension para elmiminar distracciones de videos de youtube",
+    
+    "icons": {
+        "16": "icon/bug-2-line.png",
+        "48": "icon/bug-2-line.png",
+        "128": "icon/bug-2-line.png"
+    },
+    "action": {
+        "default_popup": "hola.html",
+        "default_icon": "icon/bug-2-line.png"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://*.youtube.com/*"],
+            "js": ["ocultar.js"]
+        }
+    ]
+}
