@@ -1,30 +1,28 @@
-let verificar = setInterval(function() { //esto es para que cheque cada tanto si esta lo que estamos buscando (id)
-    
 
-
-const distraccion = document.querySelector("#secondary") // esta madre la saque viendo el html es el ID de la parte que quiero quitar
-
-
-if (distraccion) {
-    distraccion.style.display = "none"; 
-    clearInterval(verificar) // se detiene si lo ecuentra
-
+function toggleSidebar(forceHide = null) {
+    const sidebar = document.querySelector("#secondary");
+    if (sidebar) {
+        if (forceHide !== null) {
+            sidebar.style.display = forceHide ? "none" : "";
+        } else {
+            sidebar.style.display = sidebar.style.display === "none" ? "" : "none";
+        }
+    }
 }
 
-}, 500); // tiempo en ms
+const observer = new MutationObserver(() => {
+    const sidebar = document.querySelector("#secondary");
+    if (sidebar) {
+        sidebar.style.display = "none";
+        observer.disconnect(); 
+    }
+});
 
-chrome.runtime.onMessage.addListener(function(mensaje, sender, senResponse){
+observer.observe(document.body, { childList: true, subtree: true });
 
+chrome.runtime.onMessage.addListener((mensaje) => {
     if (mensaje.orden === "cambiar") {
-        const distraccion = document.querySelector("#secondary");
-
-        if (distraccion) {
-            if (distraccion.style.display === "none") {
-                distraccion.style.display = "";
-            }else {
-                distraccion.style.display = "none";
-            }
-        }
+        toggleSidebar();
     }
 });
 

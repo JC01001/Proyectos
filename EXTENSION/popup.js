@@ -1,4 +1,4 @@
-const usarBoton = document.getElementById("encender");
+const usarBoton = document.getElementById("boton");
 
     usarBoton.addEventListener("click", function(){
         chrome.tabs.query({ active: true, currentWindow: true}, function(tabs){
