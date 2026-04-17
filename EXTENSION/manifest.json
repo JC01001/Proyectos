@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
-    "name": "Extension Sin Distraccion",
-    "version": "1.0", 
-    "description": "extension para elmiminar distracciones de videos de youtube",
-    
+    "name": "NO lateral bar",
+    "version": "1.1", 
+    "description": "extension para elmiminar la barra lateral de youtube",
+    "author": "JCAS",
     "icons": {
         "16": "icon/bug-2-line.png",
         "48": "icon/bug-2-line.png",
